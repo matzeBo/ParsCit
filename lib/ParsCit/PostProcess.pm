@@ -189,7 +189,7 @@ sub NormalizeFields
 			if (defined $cite_info{ $tag }) {
 				if ($tag eq "authors" || $tag eq "editors") {
 					my $currentlist_ref = \@{$cite_info{ $tag }};
-					push $currentlist_ref, @{$content};
+					push @{$currentlist_ref}, @{$content};
 				}
 			}
 			else {
