@@ -984,6 +984,15 @@ sub PrepData
 		    # 22 = punctuation
 			push(@{ $feats[ $j ] }, $punct);
 			
+			###
+			# New attribute: inMarker 
+			# Shall mark expressions like 'in:', which indicates that the referenced publication is part of a collective publication
+			###
+			# 23 = in-marker
+			my $inMarkerWord = $ParsCit::ConfigLang::inMarker;
+			my $inMarker = ($word =~ /^\s*$inMarkerWord:\s*$/i) ? "isInMarker" : "no";
+			push(@{ $feats[ $j ] }, $inMarker); 
+			
 		    # output tag
 		    push(@{ $feats[ $j ] }, $tag);
 

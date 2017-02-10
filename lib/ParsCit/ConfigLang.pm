@@ -1,15 +1,6 @@
 package ParsCit::ConfigLang;
 
-################
-# Written By Matthias Bösinger (29.03.2016)
-# 
-# Modul is used to set language specific data fields.
-# Call of 'Init' with language type passed as parameter, will cause the initialization of the gloabl data fields.
-# hasEditor: Regex used in feature determination to decide if a reference contains editor tokens.
-# authorSplit: Regex used to split contiguous as author tags labeled tokens, into several author-names.
-# authorDelete: Regex used to delete parts of an as author tag labeled token.
-# inMarker: not in use in this version -> could be used for additional feature that marks a collective volume in the reference string
-################
+# MB1 (March 2016)
 
 use utf8;
 

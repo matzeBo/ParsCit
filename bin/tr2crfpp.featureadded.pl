@@ -219,6 +219,15 @@ while (<IF>) { 	# set encoding to UTF-8 - MB1
   	          ($word =~ /^[0-9]{2-5}\([0-9]{2-5}\).?$/) ? "possibleVol" : "others";
       push(@{$feats[$j]}, $punct);		    # 22 = punctuation
 
+	  
+	  ###
+	  # New attribute: inMarker 
+	  # Shall mark expressions like 'in:', which indicates that the referenced publication is part of a collective publication
+	  ###
+	  # 23 = in-marker
+	  my $inMarker = ($word =~ /^\s*in:\s*$/i) ? "isInMarker" : "no";
+	  push(@{ $feats[ $j ] }, $inMarker); 
+
       # output tag
       push(@{$feats[$j]}, $tag);
       $j++;

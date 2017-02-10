@@ -5,9 +5,6 @@ package ParsCit::PostProcess;
 # representations.
 #
 # Isaac Councill, 07/20/07
-#
-# Matthias Bösinger (29.03.2016)
-# -> all changes marked with: MB1
 ###
 
 use utf8;
@@ -189,7 +186,7 @@ sub NormalizeFields
 			if (defined $cite_info{ $tag }) {
 				if ($tag eq "authors" || $tag eq "editors") {
 					my $currentlist_ref = \@{$cite_info{ $tag }};
-					push @{$currentlist_ref}, @{$content};
+					push $currentlist_ref, @{$content};
 				}
 			}
 			else {
@@ -382,7 +379,7 @@ sub RepairAndTokenizeAuthorText
     $author_text =~ s/\:/ /g;
 #   $author_text =~ s/[\:\"\<\>\/\?\{\}\[\]\+\=\(\)\*\^\%\$\#\@\!\~\_]//g;
     $author_text =~ s/[\:\"\<\>\?\{\}\[\]\+\=\(\)\*\^\%\$\#\@\!\~\_]//g; 	#keep 'slash' since slash is often used as name seperator - MB1
-    
+   
     $author_text = JoinMultiWordNames($author_text);
 
     my @orig_tokens	= split '\s+', $author_text;
@@ -493,7 +490,8 @@ sub JoinMultiWordNames
 {
     my $author_text = shift;
 #   $author_text =~ s/\b((?:van|von|der|den|de|di|le|el))\s/$1_/sgi; # Thang 02 Mar 10: change \1 into \$1
-    $author_text =~ s/\b((?:van|von|der|den|de|di|le|el|zu|zur|vom|zum|und|dem|d'|del|da|degli|dalla|te|ter|of|v.|d.|z.))\s/$1_/sgi; # added more multi word components - MB1
+    $author_text =~ s/\b((?:(?i)van|von|der|den|de|di|le|el|zu|zur|vom|zum|und|dem|d'|del|da|degli|dalla|te|ter|of|(?-i)v.|d.|z.))\s/$1_/sg; # added more multi word components - MB1
+     print "$author_text\r\n"; 
     return $author_text;
 
 }

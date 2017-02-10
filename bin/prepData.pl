@@ -1,11 +1,11 @@
-#!/usr/bin/perl -CSD
+#!/usr/bin/perl
 #
 # Script to transform reference strings to crf++ compatible data.
 # By doing so, CRF++ can be used manually with the trasnformed reference data.
 #
 # Derived from 'parseRefStrings.pl'
 #
-# written by Matthias Bösinger (29.03.2016)
+# MB1 (March 2016)
 
 use strict;
 use FindBin;
